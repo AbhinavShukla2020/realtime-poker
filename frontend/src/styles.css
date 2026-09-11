@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;800&display=swap");
+:root { font-family: Manrope, sans-serif; color: #f5f2e9; background: #0b1110; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: radial-gradient(circle at 50% 20%, #173b31, #090d0c 65%); }
+button, input { font: inherit; }
+.shell { width: min(1050px, 92vw); margin: auto; padding: 38px 0; }
+header, footer, .actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+h1 { margin: 0; font-size: clamp(2rem, 5vw, 4.5rem); text-transform: capitalize; }
+.eyebrow { color: #d5a84b; letter-spacing: .2em; font: 500 .78rem DM Mono; }
+.felt { margin: 38px 0 20px; min-height: 430px; padding: 60px; border: 10px solid #432f21; border-radius: 48%; background: #0a6548; box-shadow: inset 0 0 80px #063c2c, 0 30px 80px #0008; text-align: center; }
+.community { min-height: 96px; display: flex; justify-content: center; gap: 10px; }
+.card { display: inline-grid; place-items: center; width: 58px; height: 82px; margin: 4px; border-radius: 8px; background: #f7f1e3; color: #121818; font: 800 1.35rem DM Mono; box-shadow: 0 5px 12px #0006; }
+.card.red { color: #bb2f2f; }
+.pot { margin: 24px; font-weight: 800; }
+.seats { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.seat { min-width: 140px; padding: 12px 16px; border-radius: 14px; background: #092b22; border: 1px solid #ffffff24; }
+.seat.active { outline: 2px solid #e6bb5e; }
+.seat small { display: block; opacity: .7; }
+.hand { padding: 24px; border-radius: 18px; background: #121a18; display: grid; gap: 18px; }
+button { border: 0; border-radius: 10px; background: #e6bb5e; color: #17130c; padding: 11px 18px; font-weight: 800; cursor: pointer; }
+button.quiet { background: transparent; color: #e6bb5e; border: 1px solid #e6bb5e; }
+input { border: 1px solid #ffffff33; border-radius: 8px; background: #0b1110; color: white; padding: 10px; }
+.join { max-width: 460px; margin: 15vh auto; }
+.join label { display: grid; gap: 6px; margin: 18px 0; }
+.error { padding: 10px; background: #7b2424; }
+code { font-family: DM Mono; color: #8ba39b; }
+@media (max-width: 680px) { .felt { padding: 35px 16px; border-radius: 80px; } .actions { flex-wrap: wrap; } }
+
