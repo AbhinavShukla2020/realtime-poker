@@ -79,7 +79,7 @@ def create_app(settings: Settings | None = None, store: TableStore | None = None
 
     @app.get("/accounts/{account_id}/hands")
     async def account_hands(account_id: str, session=Depends(db_session)):
-        query = select(HandHistory).where(HandHistory.state["player_ids"].contains(account_id))
+        query = select(HandHistory).where(HandHistory.state["player_ids"].contains([account_id]))
         result = await session.execute(query)
         return [row.state for row in result.scalars()]
 

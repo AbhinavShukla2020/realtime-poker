@@ -24,10 +24,16 @@ def shuffled_deck(seed: bytes) -> list[Card]:
     cards = deck()
     counter = 0
     for upper in range(len(cards) - 1, 0, -1):
-        digest = hmac.new(seed, counter.to_bytes(8, "big"), hashlib.sha256).digest()
-        index = int.from_bytes(digest[:8], "big") % (upper + 1)
+        width = upper + 1
+        limit = 2**64 - (2**64 % width)
+        while True:
+            digest = hmac.new(seed, counter.to_bytes(8, "big"), hashlib.sha256).digest()
+            counter += 1
+            candidate = int.from_bytes(digest[:8], "big")
+            if candidate < limit:
+                index = candidate % width
+                break
         cards[upper], cards[index] = cards[index], cards[upper]
-        counter += 1
     return cards
 
 
@@ -65,4 +71,3 @@ def verify_reveal(reveal: dict[str, object], observed_cards: list[str]) -> bool:
     seed = derive_seed(str(reveal["hand_id"]), secret, dict(reveal["player_entropy"]))
     expected = [str(card) for card in shuffled_deck(seed)[: len(observed_cards)]]
     return hmac.compare_digest("|".join(expected), "|".join(observed_cards))
-
